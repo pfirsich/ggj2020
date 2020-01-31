@@ -1,0 +1,62 @@
+# Repair
+zum repairen muss man zuerst etwas kaputt machen
+entropy als endgegner
+
+über das game teile sammeln, die man am ende zusammenbaut - damit kann man jedes game repair-ifyen
+repairen is immer viel schwerer als kaputt machen -> vllt. asymmetrischer multiplayer 3v1 (mit einem repairer)
+    verschiedene spieler haben verschiedene tools - man kann die austauschen
+
+was für cooole sachen kann man zerstören:
+freundschaften
+vertrauen
+the climate/environment
+the whole world
+team
+
+sachen die so aussehen als seien sie repaired, aber sind es nicht
+z.b. tasten bei ner fernbedienung abklebt - "HACK statt FIX"
+
+vllt. muss man zerstören um zu reparieren (zum teile sammeln)
+
+fake-computer reparieren - fake os
+
+vllt. ne fabrik in der zeugs nicht funktioniert und man muss "hacken" statt reparieren (z.b. einfach ein förderband kaputt machen, weil es zu langsam läuft, damit ein fabrikarbeiter einfach anfängt die teile per hand zu tragen)
+
+4 werkzeuge aber leute 3 und man muss immer wieder in den werkzeugraum um sein equipment zu variieren
+
+wenn was kaputt geht ertönt ein alarm und ein licht blinkt und einer muss zu einem kontroll-raum in dem man einen knopf drückt um dann zu sehen, was kaputt ist
+
+ratte, die sich ungesehen bewegen kann und dann sachen kaputt macht, damit die anderen einem nicht im weg stehen
+
+oder raumschiff
+
+design-problem: do we have to fit the whole game on one screen? if we show only a portion of it, which portion?
+
+maus-fallen
+
+gegner sollen maus fangen können
+
+man kann die tools werfen - man kann die maus abwerfen und sich gegenseitig tools zuwerfen
+
+die maus muss süß und sympathisch sein  
+
+ein handwerker hat zwei linke hände
+
+one-way doors
+
+maus sucht sich den schadenstypen aus
+
+mausefallenfabrik, die nach einer bestimmten zeit einfach fertig ist.
+
+invincible nach 
+
+die maus hat versch. schadenstypen, die versch. outcomes erzeugen (versch. reparaturen brauchen)
+jede reparatur muss nnur einmal gemacht werden und danach sind die maschinen fortified und können nicht nochmal 
+auf die gleiche art zerstört werden.
+vllt. kann man sich das auch sich nicht aussuchen, welchen schadenstyp die maus erzeugt, sondern man bekommt ihn random
+
+die dauer der zerstötung bestimmt den grad und die anzahl der benötigten reparaturschritte/tools
+
+2d/3d? artstyle?
+diviersifiers durchgehen
+trello/chat/github setup
