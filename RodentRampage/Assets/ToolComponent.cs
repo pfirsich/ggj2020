@@ -7,18 +7,25 @@ public class ToolComponent : MonoBehaviour
     public enum ToolType { Hammer, Wrench, Screwdriver, Drill, Oilcan };
     public ToolType toolType;
     public MechanicComponent pickedUpBy;
-    // Start is called before the first frame update
+    public float friction = 1.0f;
+
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
+    void FixedUpdate()
+    {
+        var rb = GetComponent<Rigidbody>();
+        rb.velocity -= friction * rb.velocity * Time.fixedDeltaTime;
+    }
+
     void Update()
     {
         if (pickedUpBy)
         {
-            transform.localPosition = pickedUpBy.transform.localPosition;
+            var pos = pickedUpBy.transform.localPosition;
+            pos.y += 0.5f;
+            transform.localPosition = pos;
         }
     }
 }

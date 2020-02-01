@@ -30,19 +30,25 @@ public class MouseComponent : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        var machine = other.transform.parent.GetComponent<MachineComponent>();
-        if (machine)
+        if (other.transform.parent)
         {
-            touchingMachine = machine;
+            var machine = other.transform.parent.GetComponent<MachineComponent>();
+            if (machine)
+            {
+                touchingMachine = machine;
+            }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        var machine = other.transform.parent.GetComponent<MachineComponent>();
-        if (machine && touchingMachine == machine)
+        if (other.transform.parent)
         {
-            touchingMachine = null;
+            var machine = other.transform.parent.GetComponent<MachineComponent>();
+            if (machine && touchingMachine == machine)
+            {
+                touchingMachine = null;
+            }
         }
     }
 }

@@ -7,16 +7,12 @@ using System;
 
 public class PlayerInputManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-
     }
 
     void SetKeyboardInput(PlayerInput input)
@@ -65,24 +61,5 @@ public class PlayerInputManager : MonoBehaviour
         {
             SetKeyboardInput(input);
         }
-
-        /*switch (gamepadCount)
-        {
-            case 0:
-                // SetKeyboardInput for all
-                break;
-            case 1:
-                // SetGamepad(0) für Mouse, sonst SetKeyboard
-                break;
-            case 2:
-                // SetGamepad(0) für Mouse, SetGamepad(1) für A, sonst SetKeyboard
-                break;
-            case 3:
-                // SetGamepad(0) für Mouse, SetGamepad(1) für A, SetGamepad(2) für B, SetKeyboard für C
-                break;
-            case 4:
-                // siehe oben, aber SetGamepad(3) für C
-                break;
-        }*/
     }
 }

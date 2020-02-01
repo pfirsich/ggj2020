@@ -177,9 +177,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwYDir: 0.2
-  throwVelocity: 10
+  throwVelocity: 20
   throwOffsetLen: 2
+  repairSpeed: 0.7
+  maxThrowChargeTime: 1
+  minThrowStrength: 0.1
   pickedUpTool: {fileID: 0}
+  throwStrength: 0
 --- !u!95 &5103637618612673137
 Animator:
   serializedVersion: 3

@@ -15,9 +15,9 @@
                 },
                 {
                     "name": "Throw",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "ead147a1-384c-41aa-b8da-8eb65a81a4e6",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 },
