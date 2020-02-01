@@ -30,12 +30,11 @@ public class MachineComponent : MonoBehaviour
         new AnimationParams(8.0f, 0.4f, 120.0f, 40, 2.0f)
     };
 
-    public float brokenness = 0;
+    public float health = 1.0f;
 
     private float timeOffset = 0;
     private float startY = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         timeOffset = UnityEngine.Random.Range(0.0f, 1.0f) * (2.0f * Mathf.PI);
@@ -61,6 +60,26 @@ public class MachineComponent : MonoBehaviour
         }
     }
 
+    public void gnaw(float amount)
+    {
+        health = Mathf.Max(0.0f, health - amount);
+    }
+
+    public void repair(float amount)
+    {
+        health = Mathf.Min(1.0f, health + amount);
+    }
+
+    int getBrokenness()
+    {
+        if (health <= 0.33333f)
+            return 2;
+        else if (health <= 0.66666f)
+            return 1;
+        else
+            return 0;
+    }
+
     void AnimateBrokenness(AnimationParams animParams)
     {
         Bounce(animParams.bounceFreq, animParams.bounceAmp, animParams.swayAmp);
@@ -70,7 +89,6 @@ public class MachineComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int brokennessDegree = Math.Min(animationParams.Length - 1, (int)Mathf.Floor(brokenness));
-        AnimateBrokenness(animationParams[brokennessDegree]);
+        AnimateBrokenness(animationParams[getBrokenness()]);
     }
 }

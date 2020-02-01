@@ -12,17 +12,15 @@ public class MouseComponent : MonoBehaviour
     private bool gnawing = false;
     private MachineComponent touchingMachine = null;
 
-    // Start is called before the first frame update
     void Start()
     {
         input = GetComponent<PlayerInput>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (touchingMachine && gnawing)
-            touchingMachine.brokenness += gnawSpeed * Time.deltaTime;
+            touchingMachine.gnaw(gnawSpeed * Time.deltaTime);
     }
 
     void OnUse(InputValue value)
@@ -41,7 +39,10 @@ public class MouseComponent : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (touchingMachine == other)
+        var machine = other.transform.parent.GetComponent<MachineComponent>();
+        if (machine && touchingMachine == machine)
+        {
             touchingMachine = null;
+        }
     }
 }

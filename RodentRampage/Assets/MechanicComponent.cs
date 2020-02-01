@@ -8,15 +8,18 @@ public class MechanicComponent : MonoBehaviour
     public float throwYDir = 0.2f;
     public float throwVelocity = 10.0f;
     public float throwOffsetLen = 2.0f;
+    public float repairSpeed = 0.7f;
 
     public ToolComponent pickedUpTool;
 
     private PlayerInput input;
     private ToolComponent touchingTool;
+    private MachineComponent touchingMachine;
+    private bool repairing;
 
     void Start()
     {
-        input = GetComponent<PlayerInput>();        
+        input = GetComponent<PlayerInput>();
     }
 
     void OnThrow(InputValue inputValue)
@@ -33,6 +36,8 @@ public class MechanicComponent : MonoBehaviour
         else if (pickedUpTool)
         {
             var moveDir = GetComponent<PlayerMovement>().getMoveDir();
+            if (moveDir.magnitude < 1e-5)
+                moveDir = transform.rotation * Vector3.forward;
             var throwDirection = new Vector3(moveDir.x, throwYDir, moveDir.z);
 
             var rb = pickedUpTool.gameObject.GetComponent<Rigidbody>();
@@ -42,12 +47,15 @@ public class MechanicComponent : MonoBehaviour
             rb.isKinematic = false;
             rb.detectCollisions = true;
 
-            Debug.Log("pickedUpTool: "+ pickedUpTool);
             pickedUpTool.pickedUpBy = null;
-
             pickedUpTool = null;
         }
-            
+
+    }
+
+    void OnUse(InputValue value)
+    {
+        repairing = value.Get<float>() > 0.5f;
     }
 
     void OnTriggerEnter(Collider other)
@@ -56,7 +64,12 @@ public class MechanicComponent : MonoBehaviour
         if (tool)
         {
             touchingTool = tool;
-            
+        }
+
+        var machine = other.transform.parent.GetComponent<MachineComponent>();
+        if (machine)
+        {
+            touchingMachine = machine;
         }
     }
 
@@ -67,10 +80,19 @@ public class MechanicComponent : MonoBehaviour
         {
             touchingTool = null;
         }
+
+        var machine = other.transform.parent.GetComponent<MachineComponent>();
+        if (machine && touchingMachine == machine)
+        {
+            touchingMachine = null;
+        }
     }
-    // Update is called once per frame
+
     void Update()
     {
-        
+        if (touchingMachine && repairing)
+        {
+            touchingMachine.repair(repairSpeed * Time.deltaTime);
+        }
     }
 }

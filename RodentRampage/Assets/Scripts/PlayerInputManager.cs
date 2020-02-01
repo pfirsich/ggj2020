@@ -47,7 +47,7 @@ public class PlayerInputManager : MonoBehaviour
 
     void SetGamepadInput(PlayerInput input, int index)
     {
-        InputUser.PerformPairingWithDevice(Gamepad.all[index], input.user);
+        InputUser.PerformPairingWithDevice(Gamepad.all[index], input.user, InputUserPairingOptions.UnpairCurrentDevicesFromUser);
         input.user.ActivateControlScheme("Gamepad");
     }
 

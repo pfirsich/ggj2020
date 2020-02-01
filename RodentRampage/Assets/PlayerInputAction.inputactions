@@ -20,6 +20,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Use",
+                    "type": "Value",
+                    "id": "8ca63722-fd48-463f-ad4f-5dc4dbdc18c8",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -246,7 +254,7 @@
                 {
                     "name": "",
                     "id": "598e5cc5-4fc7-4c7b-9fb3-6e6a40ce28fa",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard_WASD",
@@ -257,7 +265,7 @@
                 {
                     "name": "",
                     "id": "16df0f39-4f94-40b6-b09c-cee0b6f6746e",
-                    "path": "<Keyboard>/o",
+                    "path": "<Keyboard>/u",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard_IJKL",
@@ -268,11 +276,55 @@
                 {
                     "name": "",
                     "id": "f9de5ed4-5951-4520-8182-d234ddd07360",
-                    "path": "<Keyboard>/r",
+                    "path": "<Keyboard>/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard_TFGH",
                     "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "659013cd-2e8d-41e8-923f-1833db182d23",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "64ee1564-20d5-4376-8f55-6c0830df8bba",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard_IJKL",
+                    "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "daa28da4-dcfa-4cee-ae2c-c827685bc4d5",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard_TFGH",
+                    "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d99cef3f-8af5-47ce-8acd-1b079d2010cb",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard_WASD",
+                    "action": "Use",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
