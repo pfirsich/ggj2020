@@ -48,8 +48,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (accel.x * vel.x < 0.0f)
                 accel.x *= reverseFrictionAccel;
-            if (accel.y * vel.y < 0.0f)
-                accel.y *= reverseFrictionAccel;
+            if (accel.z * vel.z < 0.0f)
+                accel.z *= reverseFrictionAccel;
 
             vel += dt * accel;
             if (vel.magnitude > maxMoveSpeed)
@@ -57,7 +57,14 @@ public class PlayerMovement : MonoBehaviour
                 vel *= maxMoveSpeed / vel.magnitude;
             }
         }
+
+        vel.y = 0; // keep only the horizontal direction
         body.velocity = vel;
+        //var lookDir = body.position - transform.position;
+        if (vel.sqrMagnitude > 0.1)
+        {
+            transform.rotation = Quaternion.LookRotation(vel);
+        }
     }
 
     void Update()
