@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,19 +11,18 @@ public class PlayerMovement : MonoBehaviour
     const float REVERSE_ACCEL_FACTOR = 2.0f;
 
     private Rigidbody body;
+    private PlayerInput input;
+
+    private Vector2 moveDir;
 
     float bool2float(bool b)
     {
         return b ? 1.0f : 0.0f;
     }
 
-    Vector3 getMovementVector()
+    public void OnMove(InputValue value)
     {
-        return new Vector3(
-            bool2float(Input.GetKey(KeyCode.D)) - bool2float(Input.GetKey(KeyCode.A)),
-            0.0f,
-            bool2float(Input.GetKey(KeyCode.W)) - bool2float(Input.GetKey(KeyCode.S))).
-            normalized;
+        moveDir = value.Get<Vector2>();
     }
 
     void Start()
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float dt = Time.fixedDeltaTime;
         Vector3 vel = body.velocity;
-        Vector3 accel = ACCEL * getMovementVector();
+        Vector3 accel = ACCEL * new Vector3(moveDir.x, 0.0f, moveDir.y).normalized;
         if (accel.magnitude < 1.0e-5)
         {
             vel -= FRICTION * vel * dt;
