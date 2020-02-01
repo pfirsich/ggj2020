@@ -15,9 +15,9 @@
                 },
                 {
                     "name": "Use",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "a64c28ac-e55c-4f65-9829-5b118d1a991f",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 }

@@ -15,11 +15,6 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveDir;
 
-    float bool2float(bool b)
-    {
-        return b ? 1.0f : 0.0f;
-    }
-
     public void OnMove(InputValue value)
     {
         moveDir = value.Get<Vector2>();
@@ -30,11 +25,21 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody>();
     }
 
+    Vector3 getMoveDir()
+    {
+        var dir = new Vector3(moveDir.x, 0.0f, moveDir.y);
+        if (dir.magnitude < 0.2)
+            return Vector3.zero;
+        if (dir.magnitude > 1.0)
+            dir /= dir.magnitude;
+        return dir;
+    }
+
     void FixedUpdate()
     {
         float dt = Time.fixedDeltaTime;
         Vector3 vel = body.velocity;
-        Vector3 accel = acceleration * new Vector3(moveDir.x, 0.0f, moveDir.y).normalized;
+        Vector3 accel = acceleration * getMoveDir();
         if (accel.magnitude < 1.0e-5)
         {
             vel -= friction * vel * dt;
