@@ -5,10 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    const float MAX_MOVE_SPEED = 5.0f;
-    const float ACCEL = 20.0f;
-    const float FRICTION = 20.0f;
-    const float REVERSE_ACCEL_FACTOR = 2.0f;
+    public float maxMoveSpeed = 5.0f;
+    public float acceleration = 20.0f;
+    public float friction = 20.0f;
+    public float reverseFrictionAccel = 2.0f;
 
     private Rigidbody body;
     private PlayerInput input;
@@ -34,22 +34,22 @@ public class PlayerMovement : MonoBehaviour
     {
         float dt = Time.fixedDeltaTime;
         Vector3 vel = body.velocity;
-        Vector3 accel = ACCEL * new Vector3(moveDir.x, 0.0f, moveDir.y).normalized;
+        Vector3 accel = acceleration * new Vector3(moveDir.x, 0.0f, moveDir.y).normalized;
         if (accel.magnitude < 1.0e-5)
         {
-            vel -= FRICTION * vel * dt;
+            vel -= friction * vel * dt;
         }
         else
         {
             if (accel.x * vel.x < 0.0f)
-                accel.x *= REVERSE_ACCEL_FACTOR;
+                accel.x *= reverseFrictionAccel;
             if (accel.y * vel.y < 0.0f)
-                accel.y *= REVERSE_ACCEL_FACTOR;
+                accel.y *= reverseFrictionAccel;
 
             vel += dt * accel;
-            if (vel.magnitude > MAX_MOVE_SPEED)
+            if (vel.magnitude > maxMoveSpeed)
             {
-                vel *= MAX_MOVE_SPEED / vel.magnitude;
+                vel *= maxMoveSpeed / vel.magnitude;
             }
         }
         body.velocity = vel;
