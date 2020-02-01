@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039f3d9d447e8c9ed80d27ad275f9710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenness: 0
+  health: 1
 --- !u!4 &229064927 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 607031efa4a9e7c9faf07341e9658e62,
@@ -1060,6 +1060,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8383458355947458609, guid: d5f39df76773c9983b83e34478f0e254,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 558366625740e27489b72c9d36d9a7c7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5f39df76773c9983b83e34478f0e254, type: 3}
 --- !u!1 &1221037508
@@ -1535,6 +1540,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8383458355947458609, guid: d5f39df76773c9983b83e34478f0e254,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 33a1dd33202594b44907609855ad5bea, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5f39df76773c9983b83e34478f0e254, type: 3}
 --- !u!1001 &3835939736878060520
@@ -1554,6 +1564,12 @@ PrefabInstance:
       propertyPath: m_NeverAutoSwitchControlSchemes
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3835939735284328544, guid: 91306e6829903257aab5ac1c57a22fe9,
+        type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 6be96435fc0d3ca55923023ceb6fb3ca,
+        type: 3}
     - target: {fileID: 3835939735284328554, guid: 91306e6829903257aab5ac1c57a22fe9,
         type: 3}
       propertyPath: m_Name
