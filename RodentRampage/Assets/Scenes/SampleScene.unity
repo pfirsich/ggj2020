@@ -366,6 +366,12 @@ PrefabInstance:
       propertyPath: m_NeverAutoSwitchControlSchemes
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2074173963808705355, guid: d5f39df76773c9983b83e34478f0e254,
+        type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 3bc3986e7e2fe9020b0ed45add3f167c,
+        type: 3}
     - target: {fileID: 2074173963808705358, guid: d5f39df76773c9983b83e34478f0e254,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -983,6 +989,12 @@ PrefabInstance:
       propertyPath: m_NeverAutoSwitchControlSchemes
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2074173963808705355, guid: d5f39df76773c9983b83e34478f0e254,
+        type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 3bc3986e7e2fe9020b0ed45add3f167c,
+        type: 3}
     - target: {fileID: 2074173963808705358, guid: d5f39df76773c9983b83e34478f0e254,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1452,6 +1464,12 @@ PrefabInstance:
       propertyPath: m_NeverAutoSwitchControlSchemes
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2074173963808705355, guid: d5f39df76773c9983b83e34478f0e254,
+        type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 3bc3986e7e2fe9020b0ed45add3f167c,
+        type: 3}
     - target: {fileID: 2074173963808705358, guid: d5f39df76773c9983b83e34478f0e254,
         type: 3}
       propertyPath: m_LocalPosition.x

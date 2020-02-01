@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody>();
     }
 
-    Vector3 getMoveDir()
+    public Vector3 getMoveDir()
     {
         var dir = new Vector3(moveDir.x, 0.0f, moveDir.y);
         if (dir.magnitude < 0.2)
