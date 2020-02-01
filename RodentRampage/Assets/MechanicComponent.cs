@@ -7,7 +7,7 @@ public class MechanicComponent : MonoBehaviour
 {
     public float throwYDir = 0.2f;
     public float throwVelocity = 10.0f;
-    public float throwOffsetLen = 2.0f;
+    public float throwOffsetLen = 4.0f;
     public float repairSpeed = 0.7f;
 
     public ToolComponent pickedUpTool;
