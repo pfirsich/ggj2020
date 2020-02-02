@@ -7,7 +7,7 @@ public class ToolComponent : MonoBehaviour
     public enum ToolType { Hammer, Wrench, Screwdriver, Drill, Oilcan };
     public ToolType toolType;
     public MechanicComponent pickedUpBy;
-    public float friction = 1.0f;
+    public float friction = 0.7f;
 
     void Start()
     {
