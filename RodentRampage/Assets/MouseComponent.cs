@@ -42,8 +42,7 @@ public class MouseComponent : MonoBehaviour
                 lastGnaw = currentTime;
             }
         }
-        //if(gnawsound....)
-        //    if gnawing play sound
+
     }
 
     void OnUse(InputValue value)
