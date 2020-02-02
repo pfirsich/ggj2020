@@ -98,7 +98,7 @@ public class MachineComponent : MonoBehaviour
         }
     }
 
-    int getBrokenness()
+    public int getBrokenness()
     {
         if (health == 1.0f)
             return 0;
