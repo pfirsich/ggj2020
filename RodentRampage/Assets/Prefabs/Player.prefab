@@ -184,7 +184,7 @@ MonoBehaviour:
   minThrowStrength: 0.1
   pickedUpTool: {fileID: 0}
   throwStrength: 0
---- !u!95 &5103637618612673137
+--- !u!95 &8186146700642237611
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ Animator:
   m_GameObject: {fileID: 2616504108799924811}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4de077d4f831b7c44a5bea1db6a80a64, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2e98a8918defed748a5a340c03c7389e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -203,6 +203,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3751556415646263720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616504108799924811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2859c8b7efeb554f8d531de79604920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6300075774553736002
 PrefabInstance:
   m_ObjectHideFlags: 0

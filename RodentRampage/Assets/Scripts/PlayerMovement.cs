@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float friction = 20.0f;
     public float reverseFrictionAccel = 2.0f;
 
+
     private Rigidbody body;
     private PlayerInput input;
 
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody>();
+
     }
 
     public Vector3 getMoveDir()
