@@ -114,9 +114,19 @@ public class MechanicComponent : MonoBehaviour
         }
     }
 
+    public bool isRepairing()
+    {
+        return touchingMachine && repairing;
+    }
+
+    public bool isThrowing()
+    {
+        return throwing;
+    }
+
     void Update()
     {
-        if (touchingMachine && repairing)
+        if (isRepairing())
         {
             touchingMachine.repair(repairSpeed * Time.deltaTime);
         }

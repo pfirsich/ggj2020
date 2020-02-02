@@ -9,9 +9,9 @@ public class player_anim : MonoBehaviour
     private Animator anim;
     void Start()
     {
-        body = GetComponent<Rigidbody>();
+        body = transform.parent.GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-
+        anim.SetFloat("CycleOffset", Random.Range(0.0f, 1.0f));
     }
 
     // Update is called once per frame
@@ -25,5 +25,9 @@ public class player_anim : MonoBehaviour
         {
             anim.SetBool("IsRunning", false);
         }
+
+        var mechanic = transform.parent.GetComponent<MechanicComponent>();
+        anim.SetBool("IsRepairing", mechanic.isRepairing());
+        anim.SetBool("IsThrowing", mechanic.isThrowing());
     }
 }
