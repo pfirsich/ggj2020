@@ -130,7 +130,7 @@ public class MechanicComponent : MonoBehaviour
 
     public bool isThrowing()
     {
-        return throwing;
+        return throwing && !pickingUp;
     }
 
     void Update()
