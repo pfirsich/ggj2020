@@ -28,6 +28,8 @@ public class MechanicComponent : MonoBehaviour
         input = GetComponent<PlayerInput>();
     }
 
+    private bool fuckoff;
+
     void OnThrow(InputValue inputValue)
     {
         throwing = inputValue.Get<float>() > 0.5;
@@ -39,10 +41,13 @@ public class MechanicComponent : MonoBehaviour
                 pickedUpTool = touchingTool;
                 touchingTool.pickedUpBy = this;
 
+                var hand = transform.Find("m_mechanic/Armature/Body/right Shoulder/right Shoulder.001/right Hand 1");
+                pickedUpTool.gameObject.transform.parent = hand;
                 var rb = pickedUpTool.gameObject.GetComponent<Rigidbody>();
-                Physics.IgnoreCollision(GetComponent<Collider>(), pickedUpTool.GetComponent<Collider>(), true);
-                ignoredTools.Add(pickedUpTool.GetComponent<Collider>());
-                pickedUpTool.gameObject.transform.position = transform.position;
+                rb.isKinematic = true;
+                rb.detectCollisions = false;
+                pickedUpTool.gameObject.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                pickedUpTool.gameObject.transform.localRotation = new Quaternion();
 
                 pickingUp = true;
             }
@@ -57,16 +62,20 @@ public class MechanicComponent : MonoBehaviour
         {
             if (pickedUpTool && !pickingUp)
             {
+
                 var moveDir = GetComponent<PlayerMovement>().getMoveDir();
                 if (moveDir.magnitude < 1e-5)
                     moveDir = transform.rotation * Vector3.forward;
                 var throwDirection = new Vector3(moveDir.x, throwYDir, moveDir.z);
-
-                var rb = pickedUpTool.gameObject.GetComponent<Rigidbody>();
                 var strength = Mathf.Lerp(minThrowStrength, 1.0f, throwStrength);
-                rb.velocity = strength * throwVelocity * throwDirection;
-                //rb.position += throwOffsetLen * new Vector3(moveDir.x, 0.0f, moveDir.y);
 
+                pickedUpTool.gameObject.transform.parent = null;
+                var rb = pickedUpTool.gameObject.GetComponent<Rigidbody>();
+                rb.isKinematic = false;
+                rb.detectCollisions = true;
+                rb.velocity = strength * throwVelocity * throwDirection;
+                Physics.IgnoreCollision(GetComponent<Collider>(), pickedUpTool.GetComponent<Collider>(), true);
+                ignoredTools.Add(pickedUpTool.GetComponent<Collider>());
                 pickedUpTool.pickedUpBy = null;
                 pickedUpTool = null;
             }
@@ -141,6 +150,18 @@ public class MechanicComponent : MonoBehaviour
                 Physics.IgnoreCollision(GetComponent<Collider>(), ignoredTools[i], false);
                 ignoredTools.RemoveAt(i);
             }
+        }
+
+        if(fuckoff)
+        {
+            fuckoff = false;
+                            var moveDir = GetComponent<PlayerMovement>().getMoveDir();
+                if (moveDir.magnitude < 1e-5)
+                    moveDir = transform.rotation * Vector3.forward;
+                var throwDirection = new Vector3(moveDir.x, throwYDir, moveDir.z);
+                var strength = Mathf.Lerp(minThrowStrength, 1.0f, throwStrength);
+                var rb = pickedUpTool.gameObject.GetComponent<Rigidbody>();
+                rb.velocity = strength * throwVelocity * throwDirection;
         }
     }
 }

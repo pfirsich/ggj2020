@@ -17,15 +17,11 @@ public class ToolComponent : MonoBehaviour
     {
         var rb = GetComponent<Rigidbody>();
         rb.velocity -= friction * rb.velocity * Time.fixedDeltaTime;
+        rb.velocity += 9.81f * Time.fixedDeltaTime * Vector3.down;
     }
 
     void Update()
     {
-        if (pickedUpBy)
-        {
-            var pos = pickedUpBy.transform.localPosition;
-            pos.y += 0.5f;
-            transform.localPosition = pos;
-        }
     }
+
 }
