@@ -61,7 +61,7 @@ public class MachineComponent : MonoBehaviour
         float t = 2.0f * Mathf.PI * freq * Time.time;
         pos.y = startY + Mathf.Abs(Mathf.Sin(t)) * amp;
         transform.localPosition = pos;
-        transform.localRotation *= Quaternion.Euler(Mathf.Sin(t) * swayAmp, 0, 0);
+        transform.localRotation = Quaternion.Euler(Mathf.Sin(t) * swayAmp, 0, 0);
     }
 
     void SpinChildren(float freq, int prob)
