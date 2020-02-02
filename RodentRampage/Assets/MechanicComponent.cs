@@ -33,6 +33,7 @@ public class MechanicComponent : MonoBehaviour
     void Start()
     {
         input = GetComponent<PlayerInput>();
+        wrongToolSound = GetComponent<AudioSource>();
     }
 
     private bool fuckoff;
