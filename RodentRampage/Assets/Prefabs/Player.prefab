@@ -180,7 +180,7 @@ MonoBehaviour:
   throwYDir: 0.2
   throwVelocity: 20
   throwOffsetLen: 2
-  repairSpeed: 0.7
+  repairSpeed: 0.3
   maxThrowChargeTime: 1
   minThrowStrength: 0.1
   pickedUpTool: {fileID: 0}

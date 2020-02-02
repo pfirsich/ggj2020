@@ -10,6 +10,8 @@ public class getIcon : MonoBehaviour
     public Sprite Oilcan;
     public Sprite ScrewDriver;
     public Sprite Drillcon;
+    public Sprite Transparent;
+
     public int ListPosition;
     private List<ToolType> tools;
     private ToolType tool;
@@ -50,7 +52,7 @@ public class getIcon : MonoBehaviour
                 gameObject.GetComponent<Image>().sprite = Oilcan;
                 break;
             default:
-                gameObject.GetComponent<Image>().sprite = null;
+                gameObject.GetComponent<Image>().sprite = Transparent;
                 break;
         }
         }
