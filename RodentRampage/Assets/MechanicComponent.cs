@@ -23,9 +23,16 @@ public class MechanicComponent : MonoBehaviour
     private bool pickingUp;
     private List<Collider> ignoredTools = new List<Collider>();
 
+    public float currentTime;
+    public AudioSource repairSound;
+    public float repairIntervall = 0.6f;
+    public float lastRepair= 0.0f;
+    public float timeSinceLastRepair;
+
     void Start()
     {
         input = GetComponent<PlayerInput>();
+
     }
 
     private bool fuckoff;
@@ -40,6 +47,7 @@ public class MechanicComponent : MonoBehaviour
             {
                 pickedUpTool = touchingTool;
                 touchingTool.pickedUpBy = this;
+                repairSound = pickedUpTool.GetComponent<AudioSource>();
 
                 var hand = transform.Find("m_mechanic/Armature/Body/right Shoulder/right Shoulder.001/right Hand 1");
                 pickedUpTool.gameObject.transform.parent = hand;
@@ -85,6 +93,11 @@ public class MechanicComponent : MonoBehaviour
     void OnUse(InputValue value)
     {
         repairing = value.Get<float>() > 0.5f;
+        if (isRepairing())
+        {
+            repairSound.Play(0);
+            lastRepair= Time.time;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -138,7 +151,16 @@ public class MechanicComponent : MonoBehaviour
         if (isRepairing())
         {
             touchingMachine.repair(repairSpeed * Time.deltaTime);
+            currentTime = Time.time;
+            timeSinceLastRepair = currentTime - lastRepair;
+            if (timeSinceLastRepair > repairIntervall)
+            {
+                Debug.Log("Time " + currentTime);
+                repairSound.Play(0);
+                lastRepair = currentTime;
+            }
         }
+    
 
         if (throwing)
             throwStrength = Mathf.Min(1.0f, throwStrength + Time.deltaTime / maxThrowChargeTime);

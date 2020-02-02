@@ -38,10 +38,21 @@ public class MachineComponent : MonoBehaviour
     private float timeOffset = 0;
     private float startY = 0;
 
+    public AudioSource repairSound;
+    public AudioSource breakSound;
+    
+
     void Start()
     {
         timeOffset = UnityEngine.Random.Range(0.0f, 1.0f) * (2.0f * Mathf.PI);
         startY = transform.localPosition.y;
+        var aSources = GetComponents<AudioSource>();
+        //repairSound = aSources[0];
+        //loadSound = aSources[1];
+        //audio3 = aSources[2];
+        repairSound = aSources[0];
+        breakSound = aSources[1];
+        
     }
 
     void Bounce(float freq, float amp, float swayAmp)
@@ -85,6 +96,8 @@ public class MachineComponent : MonoBehaviour
         if (newBrokenness != preBrokenness)
         {
             rerollDamageTypes(newBrokenness);
+            //play broken
+            breakSound.Play(0);
         }
     }
 
@@ -95,6 +108,8 @@ public class MachineComponent : MonoBehaviour
         if (getBrokenness() != preBrokenness)
         {
             damageTypes.RemoveAt(0);
+            repairSound.Play(0);
+            //play repair
         }
     }
 
