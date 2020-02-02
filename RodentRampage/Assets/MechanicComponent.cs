@@ -25,6 +25,7 @@ public class MechanicComponent : MonoBehaviour
 
     public float currentTime;
     public AudioSource repairSound;
+    public AudioSource wrongToolSound;
     public float repairIntervall = 0.6f;
     public float lastRepair= 0.0f;
     public float timeSinceLastRepair;
@@ -32,7 +33,6 @@ public class MechanicComponent : MonoBehaviour
     void Start()
     {
         input = GetComponent<PlayerInput>();
-
     }
 
     private bool fuckoff;
@@ -98,6 +98,11 @@ public class MechanicComponent : MonoBehaviour
             repairSound.Play(0);
             lastRepair= Time.time;
         }
+        else
+        {
+            if (couldRepair() && !rightTool())
+                wrongToolSound.Play();
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -138,7 +143,23 @@ public class MechanicComponent : MonoBehaviour
 
     public bool isRepairing()
     {
-        return touchingMachine && repairing;
+        return couldRepair() && rightTool();
+    }
+
+    public bool couldRepair()
+    {
+        if (!repairing)
+            return false;
+        if (!touchingMachine)
+            return false;
+        if (touchingMachine.damageTypes.Count == 0)
+            return false;
+        return true;
+    }
+
+    public bool rightTool()
+    {
+        return pickedUpTool.toolType == touchingMachine.damageTypes[0];
     }
 
     public bool isThrowing()
@@ -160,7 +181,7 @@ public class MechanicComponent : MonoBehaviour
                 lastRepair = currentTime;
             }
         }
-    
+
 
         if (throwing)
             throwStrength = Mathf.Min(1.0f, throwStrength + Time.deltaTime / maxThrowChargeTime);
