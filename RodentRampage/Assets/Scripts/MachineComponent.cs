@@ -25,9 +25,9 @@ public class MachineComponent : MonoBehaviour
 
     static AnimationParams[] animationParams = new AnimationParams[3]
     {
-        new AnimationParams(4.0f, 0.15f, 90.0f, 100, 0.3f),
+        new AnimationParams(4.0f, 0.1f, 90.0f, 100, 0.3f),
         new AnimationParams(8.0f, 0.3f, 90.0f, 80, 1.5f),
-        new AnimationParams(8.0f, 0.4f, 120.0f, 40, 2.0f)
+        new AnimationParams(8.0f, 0.5f, 120.0f, 40, 2.0f)
     };
 
     public float health = 1.0f;
@@ -35,6 +35,7 @@ public class MachineComponent : MonoBehaviour
     public int brokenness = 0;
     public int animIndex = 0;
 
+    private Quaternion startRot;
     private float timeOffset = 0;
     private float startY = 0;
 
@@ -42,6 +43,7 @@ public class MachineComponent : MonoBehaviour
     {
         timeOffset = UnityEngine.Random.Range(0.0f, 1.0f) * (2.0f * Mathf.PI);
         startY = transform.localPosition.y;
+        startRot = transform.localRotation;
     }
 
     void Bounce(float freq, float amp, float swayAmp)
@@ -50,7 +52,7 @@ public class MachineComponent : MonoBehaviour
         float t = 2.0f * Mathf.PI * freq * Time.time;
         pos.y = startY + Mathf.Abs(Mathf.Sin(t)) * amp;
         transform.localPosition = pos;
-        transform.localRotation = Quaternion.Euler(Mathf.Sin(t) * swayAmp, 0, 0);
+        transform.localRotation = startRot * Quaternion.Euler(Mathf.Sin(t) * swayAmp, 0, 0);
     }
 
     void SpinChildren(float freq, int prob)

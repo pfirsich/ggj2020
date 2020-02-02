@@ -37,7 +37,6 @@ public class MouseComponent : MonoBehaviour
             timeSinceLastGnaw = currentTime - lastGnaw;
             if (timeSinceLastGnaw > gnawIntervall)
             {
-                Debug.Log("Time " + currentTime);
                 gnawSound.Play(0);
                 lastGnaw = currentTime;
             }
@@ -50,7 +49,7 @@ public class MouseComponent : MonoBehaviour
     {
         gnawing = value.Get<float>() > 0.5f;
         //hier den sound nach nem zeit intervall Time.time
-        //TODO check if at machine  
+        //TODO check if at machine
         if (touchingMachine && gnawing)
         {
             gnawSound.Play(0);
