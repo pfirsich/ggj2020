@@ -31,6 +31,9 @@ public class MachineComponent : MonoBehaviour
     };
 
     public float health = 1.0f;
+    public List<ToolType> damageTypes = new List<ToolType>();
+    public int brokenness = 0;
+    public int animIndex = 0;
 
     private float timeOffset = 0;
     private float startY = 0;
@@ -60,24 +63,51 @@ public class MachineComponent : MonoBehaviour
         }
     }
 
+    void rerollDamageTypes(int num)
+    {
+        damageTypes.Clear();
+        for (int i = 0; i < num; ++i)
+        {
+            ToolType candidate;
+            do
+            {
+                candidate = (ToolType)UnityEngine.Random.Range(0, 4);
+            } while(damageTypes.Count > 0 && candidate == damageTypes[0]);
+            damageTypes.Insert(0, candidate);
+        }
+    }
+
     public void gnaw(float amount)
     {
+        int preBrokenness = getBrokenness();
         health = Mathf.Max(0.0f, health - amount);
+        int newBrokenness = getBrokenness();
+        if (newBrokenness != preBrokenness)
+        {
+            rerollDamageTypes(newBrokenness);
+        }
     }
 
     public void repair(float amount)
     {
+        int preBrokenness = getBrokenness();
         health = Mathf.Min(1.0f, health + amount);
+        if (getBrokenness() != preBrokenness)
+        {
+            damageTypes.RemoveAt(0);
+        }
     }
 
     int getBrokenness()
     {
-        if (health <= 0.33333f)
-            return 2;
-        else if (health <= 0.66666f)
-            return 1;
-        else
+        if (health == 1.0f)
             return 0;
+        else if (health >= 0.66666f) // should be < 1.0f!
+            return 1;
+        else if (health >= 0.33333f)
+            return 2;
+        else
+            return 3;
     }
 
     void AnimateBrokenness(AnimationParams animParams)
@@ -89,6 +119,8 @@ public class MachineComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AnimateBrokenness(animationParams[getBrokenness()]);
+        brokenness = getBrokenness();
+        animIndex = Math.Max(0, getBrokenness() - 1);
+        AnimateBrokenness(animationParams[animIndex]);
     }
 }

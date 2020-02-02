@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ToolType { Hammer, Wrench, Screwdriver, Drill, Oilcan };
+
 public class ToolComponent : MonoBehaviour
 {
-    public enum ToolType { Hammer, Wrench, Screwdriver, Drill, Oilcan };
     public ToolType toolType;
     public MechanicComponent pickedUpBy;
     public float friction = 0.7f;
